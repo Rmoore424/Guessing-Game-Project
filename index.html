@@ -5,7 +5,21 @@
 		<title>Rich's Guessing Game</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<script type="text/javascript" src="scripts/guess_game.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>		
+		<script>
+			$(document).ready(function() {
+				var origText = $(".answer").val();
+				$(".answer").click(function() {
+					$(".answer").val("");
+				});
+				$(".enter").click(function() {
+					setNumber();
+					$(".answer").val(origText);
+				});
+			})
 
+		</script>
 	</head>
 
 	<body>
@@ -116,7 +130,7 @@
 			</div>
 			
 			<div class="button_wrapper">
-				<input class="answer" type="text" value="Enter a number from 1-100" />
+				<input class="answer" type="text" value="Enter a number from 1-100"/>
 				<button class="enter">Guess</button>
 			</div>
 		</div>
