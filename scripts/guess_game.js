@@ -19,3 +19,12 @@ function setNumber() {
 		}   
 	})
 }
+
+function reset() {
+	$(".number").each(function() {
+		var backgroundColor = $(this).css("background-color");
+		if (backgroundColor != "#FFFED9") {
+			$(this).css("background-color", "#FFFED9");
+		}
+	})
+}
