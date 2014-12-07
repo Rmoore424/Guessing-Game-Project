@@ -26,7 +26,6 @@ function setNumber() {
 }
 
 function showHint() {
-	$(".hint_box").show();
 	var lowRange;
 	var highRange;
 	if ((rightNumber+20) <= 100) {
@@ -48,6 +47,19 @@ function showHint() {
 
 }
 
+function highLow() {
+	var value = $(".answer").val();
+	if (value < rightNumber) {
+		$(".hint_box").html("Too Low. Try a higher number.");
+	}
+	else if (value > rightNumber) {
+		$(".hint_box").html("Too High. Try a lower number.");
+	}
+	else {
+		$(".hint_box").html("That's it! You guessed the right number!");
+	}
+}
+
 function resetAll() {
 	$(".number").each(function() {
 		var backgroundColor = $(this).css("background-color");
@@ -56,5 +68,5 @@ function resetAll() {
 		}
 	})
 	rightNumber = Math.floor(Math.random() *100) + 1
-	$(".hint_box").hide();
+	$(".hint_box").html("");
 }
