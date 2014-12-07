@@ -8,6 +8,7 @@
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>		
 		<script>
+
 			$(document).ready(function() {
 				var origText = $(".answer").val();
 				$(".answer").click(function() {
@@ -18,8 +19,11 @@
 					$(".answer").val(origText);
 				});
 				$(".reset").click(function() {
-					reset();
-				})
+					resetAll();
+				});
+				$(".hint").click(function() {
+					showHint();
+				});
 			})
 
 		</script>
@@ -138,6 +142,30 @@
 				<br/>
 				<button class="reset">Start Over</button>
 				<button class="hint">Am I Close?</button>
+			</div>
+			<div class ="hint_box"></div>
+			<div class="legend">
+				<h2 class="legend_head">Legend</h2>
+				<section class="legend_block">
+					<div class="ice"></div>
+					<p class="legend_desc"> : > 30 numbers away</p>
+				</section>
+				<section class="legend_block">
+					<div class="cold"></div>
+					<p class="legend_desc"> : > 15 &amp; <= 30 numbers away</p>
+				</section>
+				<section class="legend_block">
+					<div class="warm"></div>
+					<p class="legend_desc"> : > 5 &amp; <= 15 numbers away</p>
+				</section>
+				<section class="legend_block">
+					<div class="hot"></div>
+					<p class="legend_desc"> : <= 5 numbers away</p>
+				</section>
+				<section class="legend_block">
+					<div class="correct"></div>
+					<p class="legend_desc"> : You Got it!</p>
+				</section>
 			</div>
 		</div>
 	</body>

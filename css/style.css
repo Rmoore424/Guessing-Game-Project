@@ -111,3 +111,73 @@ font-size: 20px;
 	margin-top: 20px;
 	margin-left: 20px;
 }
+
+/*Style the hint box */
+
+.hint_box {
+	width: 340px;
+	height: 100px;
+	margin: 20px auto;
+	text-align: center;
+	font-size: 24px;
+	color: yellow;
+	font-family: Arial, sans-serif;
+}
+
+/*Style legend */
+
+.legend {
+	width: 255px;
+	position: relative;
+	top: -570px;
+	left: -30px;
+	border: 1px solid black;
+	border-radius: 5px;
+	background-color: #FFFED9;
+	padding: 15px 10px 20px 10px;
+}
+
+.legend h2 {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.legend section {
+	height: 40px;
+}
+
+.legend section p {
+	padding-top: 8px;
+}
+
+.legend div {
+	width: 24px;
+	height: 24px;
+	padding-top: 1px;
+	padding-left: 1px;
+	float: left;
+	margin: 5px 5px;
+	text-align: center;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+
+.ice {
+	background-color: #1A1FD9;
+}
+
+.cold {
+	background-color: #80B8C4;
+}
+
+.warm {
+	background-color: #FF6B78;
+}
+
+.hot {
+	background-color: #D22018;
+}
+
+.correct {
+	background-color: black;
+}
