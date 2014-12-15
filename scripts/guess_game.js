@@ -1,72 +1,96 @@
 var rightNumber = Math.floor(Math.random() *100) + 1;
-var lastValue = "";
+var lastValue = 0;
+var hotCold = "";
+var numGuesses = 5;
+var currentGuesses = [];
+
+function resetText() {
+	$(".answer").val("Enter a number from 1-100");
+}
+
+function setGuesses() {
+	numGuesses--;
+	$("#total").html(numGuesses);
+}
+
+function noMoreGuesses() {
+	if (numGuesses == 0 && lastValue != rightNumber) {
+		$(".enter").unbind("click");
+		$(".hint_box").html("Sorry no more guesses left.  Hit Start Over to try again.");
+	}
+}
 
 function setNumber() {
-	var value = $('.answer').val();
+	var value = +$('.answer').val();
+	var lastDiff = Math.abs(rightNumber - lastValue);
+	var currentDiff = Math.abs(rightNumber - value);
+	if (lastDiff > currentDiff) {
+		hotCold = "warmer";
+	}
+	else {
+		hotCold = "colder";
+	}
 	$(".number").each(function(idx) {
 		if (value == idx+1) {
 			if (value == rightNumber) {
-				$(this).css("background-color", "black");
+				$(this).addClass("correct");
+				$(".hint_box").html("That's it! You guessed the right number! Hit Start Over to play again.");
+				$(".enter").unbind("click");
 			}
 			else if (value > rightNumber+30 || value < rightNumber-30) {
-				$(this).css("background-color", "#1A1FD9");
+				$(this).addClass("ice");
 			}
 			else if ((value > rightNumber+15 && value <=rightNumber+30) || (value < rightNumber-15 && value >=rightNumber-30)){
-				$(this).css("background-color", "#80B8C4");
+				$(this).addClass("cold");
 			}
 			else if ((value > rightNumber+5 && value <=rightNumber+15) || (value < rightNumber-5 && value >=rightNumber-15)){
-				$(this).css("background-color", "#FF6B78");
+				$(this).addClass("warm");
 			}
 			else {
-				$(this).css("background-color", "#D22018")
+				$(this).addClass("hot");
+			}
+			if (value < rightNumber) {
+				$(".hint_box").html("Too Low. Try a higher number. You're getting " +hotCold+".");
+			}
+			else if (value > rightNumber) {
+				$(".hint_box").html("Too High. Try a lower number. You're getting " +hotCold+".");
 			}
 		}   
-	})
-	var lastValue = value;
+	});
+	lastValue = value;
+	currentGuesses.push(value);
 }
 
 function showHint() {
-	var lowRange;
-	var highRange;
-	if ((rightNumber+20) <= 100) {
-		highRange = rightNumber+20;
-	}
-	else {
-		highRange = 100;
-	}
-
-	if ((rightNumber-20) >= 1) {
-		lowRange = rightNumber-20;
-	}
-	else {
-		lowRange = 1;
-	}
-	if (lastValue == "") {
-		$(".hint_box").html("Your number is between " + lowRange + " and " + highRange);
-	}
-
+		$(".hint_box").html("The correct number is " + rightNumber + "!");
 }
 
-function highLow() {
-	var value = $(".answer").val();
-	if (value < rightNumber) {
-		$(".hint_box").html("Too Low. Try a higher number.");
+var enterMain = function() {
+	var enterAnswer = +$(".answer").val();
+
+	if (currentGuesses.indexOf(enterAnswer) >= 0) {
+		$(".hint_box").html("You're already guess that number, please choose another one.")
 	}
-	else if (value > rightNumber) {
-		$(".hint_box").html("Too High. Try a lower number.");
+	else if (enterAnswer > 0 && enterAnswer < 101) {
+		setNumber();
+		setGuesses();
+		resetText();
+		noMoreGuesses();
 	}
 	else {
-		$(".hint_box").html("That's it! You guessed the right number!");
+		$(".hint_box").html("Please enter a valid number.")
 	}
 }
+
 
 function resetAll() {
-	$(".number").each(function() {
-		var backgroundColor = $(this).css("background-color");
-		if (backgroundColor != "#FFFED9") {
-			$(this).css("background-color", "#FFFED9");
-		}
-	})
+	$(".number").removeClass("correct ice cold warm hot");
 	rightNumber = Math.floor(Math.random() *100) + 1
 	$(".hint_box").html("");
+	$(".enter").bind("click", enterMain);
+	numGuesses = 5;
+	$("#total").html(numGuesses);
+	currentGuesses = [];
+	lastValue = 0;
+	hotCold = "";
 }

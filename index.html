@@ -10,16 +10,14 @@
 		<script>
 
 			$(document).ready(function() {
-				var origText = $(".answer").val();
 				$(".answer").click(function() {
 					$(".answer").val("");
 				});
 				$(".enter").click(function() {
-					setNumber();
-					highLow();
-					$(".answer").val(origText);
+					enterMain();
 				});
 				$(".reset").click(function() {
+					resetText();
 					resetAll();
 				});
 				$(".hint").click(function() {
@@ -140,32 +138,34 @@
 			<div class="button_wrapper">
 				<input class="answer" type="text" value="Enter a number from 1-100"/>
 				<button class="enter">Guess</button>
+				<p class="guesses">Guesses Left: <span id="total">5</span></p>
+				<div class="clear"></div>
 				<br/>
 				<button class="reset">Start Over</button>
-				<button class="hint">Am I Close?</button>
+				<button class="hint">Get Hint</button>
 			</div>
 			<div class ="hint_box"></div>
 			<div class="legend">
 				<h2 class="legend_head">Legend</h2>
 				<section class="legend_block">
 					<div class="ice"></div>
-					<p class="legend_desc"> : > 30 numbers away</p>
+					<p class="legend_desc"> : <span class="bold">Ice Cold</span></p>
 				</section>
 				<section class="legend_block">
 					<div class="cold"></div>
-					<p class="legend_desc"> : > 15 &amp; <= 30 numbers away</p>
+					<p class="legend_desc"> : <span class="bold">Cool</span></p>
 				</section>
 				<section class="legend_block">
 					<div class="warm"></div>
-					<p class="legend_desc"> : > 5 &amp; <= 15 numbers away</p>
+					<p class="legend_desc"> : <span class="bold">Warm</span></p>
 				</section>
 				<section class="legend_block">
 					<div class="hot"></div>
-					<p class="legend_desc"> : <= 5 numbers away</p>
+					<p class="legend_desc"> : <span class="bold">Hot</span></p>
 				</section>
 				<section class="legend_block">
 					<div class="correct"></div>
-					<p class="legend_desc"> : You Got it!</p>
+					<p class="legend_desc"> : <span class="bold">You Got it!</span></p>
 				</section>
 			</div>
 		</div>
