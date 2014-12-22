@@ -10,6 +10,7 @@
 		<script>
 
 			$(document).ready(function() {
+				bindKey();
 				$(".answer").click(function() {
 					$(".answer").val("");
 				});
@@ -31,6 +32,7 @@
 	<body>
 		<div class="container">
 			<h1 class="game_title">Rich's Guessing Game</h1>
+			<img class ="win_banner" src="images/guessing_game_banner.png" />
 			<div class="answer_wrapper">
 				<div class="number">1</div>
 				<div class="number">2</div>

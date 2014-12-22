@@ -16,6 +16,7 @@ function setGuesses() {
 function noMoreGuesses() {
 	if (numGuesses == 0 && lastValue != rightNumber) {
 		$(".enter").unbind("click");
+		$(".answer").unbind("keydown");
 		$(".hint_box").html("Sorry no more guesses left.  Hit Start Over to try again.");
 	}
 }
@@ -36,10 +37,13 @@ function setNumber() {
 				$(this).addClass("correct");
 				$(".hint_box").html("That's it! You guessed the right number! Hit Start Over to play again.");
 				$(".enter").unbind("click");
+				$(".answer").unbind("keydown");
+				$(".win_banner").show();
+				$(".answer_wrapper").addClass("opaque");
 			}
 			else if (value > rightNumber+30 || value < rightNumber-30) {
 				$(this).addClass("ice");
-			}
+	}
 			else if ((value > rightNumber+15 && value <=rightNumber+30) || (value < rightNumber-15 && value >=rightNumber-30)){
 				$(this).addClass("cold");
 			}
@@ -82,15 +86,30 @@ var enterMain = function() {
 	}
 }
 
+function bindKey() {
+	$(".answer").on("keydown", function(e) {
+		if (e.keyCode == 13) {
+			e.preventDefault();
+			enterMain();
+		}
+		else if (e.keyCode == 8) {
+			$(".answer").val("");
+		}
+	});
+}
+
 
 function resetAll() {
 	$(".number").removeClass("correct ice cold warm hot");
 	rightNumber = Math.floor(Math.random() *100) + 1
 	$(".hint_box").html("");
 	$(".enter").bind("click", enterMain);
+	bindKey();
 	numGuesses = 5;
 	$("#total").html(numGuesses);
 	currentGuesses = [];
 	lastValue = 0;
 	hotCold = "";
+	$(".win_banner").hide();
+	$(".answer_wrapper").removeClass("opaque");
 }

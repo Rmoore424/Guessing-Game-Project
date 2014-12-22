@@ -26,19 +26,42 @@ display: block;
 }
 
 body {
-    background-color: #004C29;
+    background-color: #022601;
+}
+
+.opaque {
+	opacity: 0.3;
+}
+
+button:focus {
+	outline: none;
+}
+
+button:hover {
+	cursor: pointer;
+	background-color: red;
 }
 
 .container {
 	width: 970px;
 	margin: auto;
+	position: relative;
+}
+
+.win_banner {
+	position: absolute;
+	z-index: 1;
+	left: 40px;
+	top: 150px;
+	display: none;
 }
 
 h1 {
 	text-align: center;
-	color: yellow;
+	color: #EFFA00;
 	margin-top: 50px;
 	font-family: Arial, sans-serif;
+	text-shadow: 1px 3px green;
 }
 
 .guesses {
@@ -59,6 +82,14 @@ h1 {
 width: 350px;
 margin: 20px auto;
 font-size: 20px;
+background-color: #4F6627;
+border-radius: 5px;
+padding: 10px;
+border-top: 10px inset #2E0C09;
+border-right: 10px inset #2E0C09;
+border-bottom: 10px outset #2E0C09;
+border-left: 10px outset #2E0C09;
+box-shadow: 0 0 1px 2px #2E0C09 inset;
 }
 
 .number {
@@ -141,9 +172,9 @@ font-size: 20px;
 .legend {
 	width: 155px;
 	position: relative;
-	top: -570px;
+	top: -600px;
 	left: 50px;
-	border: 1px solid black;
+	border: 3px solid black;
 	border-radius: 5px;
 	background-color: #FFFED9;
 	padding: 15px 10px 20px 10px;
