@@ -131,6 +131,7 @@ box-shadow: 0 0 1px 2px #2E0C09 inset;
 	position: relative;
 	top: -1px;
 	font-size: 14px;
+	font-weight: bold;
 	text-align: center;
 	background-color: yellow;
 }
@@ -141,6 +142,7 @@ box-shadow: 0 0 1px 2px #2E0C09 inset;
 	background-color: orange;
 	border-radius: 10px;
 	font-size: 16px;
+	font-weight: bold;
 	margin-left: 330px;
 	margin-top: 20px;
 }
@@ -151,6 +153,7 @@ box-shadow: 0 0 1px 2px #2E0C09 inset;
 	background-color: orange;
 	border-radius: 10px;
 	font-size: 16px;
+	font-weight: bold;
 	margin-top: 20px;
 	margin-left: 20px;
 }
