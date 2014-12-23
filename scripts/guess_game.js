@@ -39,7 +39,7 @@ function setNumber() {
 				$(".enter").unbind("click");
 				$(".answer").unbind("keydown");
 				$(".win_banner").show();
-				$(".answer_wrapper").addClass("opaque");
+				$(".answer_wrapper, .legend").addClass("opaque");
 			}
 			else if (value > rightNumber+30 || value < rightNumber-30) {
 				$(this).addClass("ice");
@@ -111,5 +111,5 @@ function resetAll() {
 	lastValue = 0;
 	hotCold = "";
 	$(".win_banner").hide();
-	$(".answer_wrapper").removeClass("opaque");
+	$(".answer_wrapper, .legend").removeClass("opaque");
 }
